@@ -1,4 +1,9 @@
-# Sveltekit monday code hello world app
+# SvelteKit & monday code hello world app
+
+monday code is a framework whereby all your monday.com apps are deployed to monday.com's serverless infrastructure, bypassing the need for your own infrastructure.
+
+- [SvelteKit](https://kit.svelte.dev/)
+- [monday code](https://developer.monday.com/apps/docs/quickstart-guide-for-monday-code)
 
 ## Create a SvelteKit app
 
@@ -68,9 +73,15 @@ npm install -g @mondaycom/apps-cli
 
 ### SvelteKit adapters
 
-Monday code natively supports nodejs, and theres an [example project here](https://github.com/mondaycom/welcome-apps/tree/master/apps/github-monday-code) that you can use for that...
+Monday code natively supports nodejs, and there's an [example project here](https://github.com/mondaycom/welcome-apps/tree/master/apps/github-monday-code) that you can use for that.
 
-If we want to run a SvelteKit app on monday code, then. using a [node adapter](https://kit.svelte.dev/docs/adapter-node) for SvelteKit is a nice start.
+If we want to run a SvelteKit app on monday code, then using a [node adapter](https://kit.svelte.dev/docs/adapter-node) for SvelteKit is a nice start.
+
+Install:
+
+```
+npm i -D @sveltejs/adapter-node
+```
 
 In `svelte.config.js`, add:
 
@@ -84,19 +95,21 @@ export default {
 };
 ```
 
+**Note:** We'll likely need to expand on this for CSP and other security headers at some point later.
+
 ### Building and deploying your SvelteKit app
 
 To build your SvelteKit app, you can run `npm run build`, which will build all the code into a native javascript application in the `build` directory.
 
 To deploy you app to monday code, you would normally run `mapps code:push`. This takes a copy of all the files in the directory and bundles them into an archiev `code.tar.gz`, uploads it onto the monday code infrastructure and then attempts to run whatever it has.
 
-This is not going to work with SvelteKit.
+**This is not going to work with SvelteKit.**
 
 Firstly, we need only the contents of the `/build` directory, and secondly, we need to give it some instructions on what we want to execute.
 
 This is where a separate `package.json` comes in.
 
-`/package.build.json`:
+`package.build.json`:
 
 ```
 {
@@ -116,7 +129,9 @@ This is where a separate `package.json` comes in.
 }
 ```
 
-Now, we need to update our `/package.json`:
+The above file is the instruction for the monday code infrastructure that explains how to start the service – the `npm run start` instruction was copied from [here](https://github.com/mondaycom/welcome-apps/blob/master/apps/github-monday-code/package.json).
+
+Now, we need to update the `scripts` object in our `package.json`:
 
 ```
 {
