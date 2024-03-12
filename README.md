@@ -2,6 +2,10 @@
 
 monday code is a framework whereby all your monday.com apps are deployed to monday.com's serverless infrastructure, bypassing the need for your own infrastructure.
 
+This is a hello world app for deploying SvelteKit on monday.com's monday code infrastructure.
+
+It doesn't do anything useful, except help you understand how to deploy a SvelteKit app on monday code.
+
 - [SvelteKit](https://kit.svelte.dev/)
 - [monday code](https://developer.monday.com/apps/docs/quickstart-guide-for-monday-code)
 
