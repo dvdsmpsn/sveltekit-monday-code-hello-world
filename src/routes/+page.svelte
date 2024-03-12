@@ -25,7 +25,13 @@
 		try editing <strong>src/routes/+page.svelte</strong>
 	</h2>
 
+
 	<Counter />
+
+
+
+	<p>VITE_MY_VARIABLE: {import.meta.env.VITE_MY_VARIABLE}</p>
+	<p>MY_SECRET_CODE: {import.meta.env.MY_SECRET_CODE}</p>
 </section>
 
 <style>

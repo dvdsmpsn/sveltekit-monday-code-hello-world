@@ -1,0 +1,15 @@
+{
+  "name": "sveltekit-monday-code-hello-world",
+  "description": "This is for the vanilla javascript app deployed on monday code infrastructure",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "server": "NODE_ENV=production node ./index.js"
+  },
+  "dependencies": {},
+  "type": "module"
+}
