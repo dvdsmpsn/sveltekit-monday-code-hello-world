@@ -4,14 +4,14 @@ monday code is a framework whereby all your monday.com apps are deployed to mond
 
 This is a hello world app for deploying SvelteKit on monday.com's monday code infrastructure.
 
-It doesn't do anything useful, except help you understand how to deploy a SvelteKit app on monday code.
+This app doesn't do anything useful, except help you understand how to deploy a SvelteKit app on monday code.
 
 - [SvelteKit](https://kit.svelte.dev/)
 - [monday code](https://developer.monday.com/apps/docs/quickstart-guide-for-monday-code)
 
 ## Create a SvelteKit app
 
-The easiest way to start building a SvelteKit app is to `run npm create`:
+The easiest way to start building a SvelteKit app is to run `npm create`:
 
 ```
 % npm create svelte@latest sveltekit-monday-code-hello-world
@@ -171,11 +171,11 @@ The `npm run build` script now runs the default build (`vite build`) and then co
 
 The `npm run mapps:code:push` script runs the build step, and then from the `/build` directory, runs `mapps code:push`.
 
-This bundles the contents of the `/build` directory, which also contains a `package.json` with instructions on how to run the app into a `code.tar.gz` archive which is then sent over to monday code infrastructure to run there.
+This bundles the contents of the `/build` directory, which also contains a `package.json` with instructions on how to run the app, into a `code.tar.gz` archive, which is then sent over to monday code infrastructure to run there.
 
 ### Environment variables
 
-We don't want any secret information such as OAuthid/secret or database connections and the like to be anywhere in our codebase, so we need a way to set these.
+We don't want any secret information such as OAuth client ID/secret or database connections and the like to be anywhere in our codebase, so we need a way to set these.
 
 For local development, a `.env` file (which is ignored using `.gitignore`) works nicely.
 
@@ -184,6 +184,8 @@ For local development, a `.env` file (which is ignored using `.gitignore`) works
 ```
 MY_SECRET_CODE=ABC123
 ```
+
+If you need to use the monday signing key, and/or OAuth key and secret for your app, this is a good place to store them. Be sure to also add them to monday code as described below.
 
 To use this in the moday code enviroment, you'll need to set this using:
 
@@ -205,16 +207,21 @@ And then added the following code to `routes/+page.svelte`:
 <p>MY_SECRET_CODE: {import.meta.env.MY_SECRET_CODE}</p>
 ```
 
-If we then also set th variables for monday code:
+If we then also set the variables for monday code:
 
 ```
 mapps code:env -m set -k VITE_MY_VARIABLE -v "Hello World" -i <app_id>
 mapps code:env -m set -k MY_SECRET_CODE -v ABC123 -i <app_id>
 ```
 
-Only the value of `VITE_MY_VARIABLE` will be allowed to be passed to the client to see:
+Only the value of `VITE_MY_VARIABLE` will be allowed to be passed to the client to be displayed:
 
-**_ Image _**
+\*\* IMAGE GOES HERE \*\*
+
+The point of this exercise is 2-fold:
+
+1. To prove that our app can read environment variables from where they've been set
+2. To also prove that only environment variables with the prefix `VITE_` can be passed through and displayed to the client browser
 
 [More details on SvelteKit .env secrets](https://www.scottspence.com/posts/sveltekit-env-secrets).
 
