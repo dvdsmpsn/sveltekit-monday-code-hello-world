@@ -188,7 +188,7 @@ For local development, a `.env` file (which **should be ignored** using `.gitign
 MY_SECRET_CODE=ABC123
 ```
 
-If you need to use the monday signing key, and/or OAuth key and secret for your app, this is a good place to store them. Be sure to also add them to monday code as described below.
+*Aside: If you need to use the monday signing key, and/or OAuth key and secret for your app, this is a good place to store them. Be sure to also add them to monday code as described below.*
 
 To use this in the moday code enviroment, you'll need to set this using:
 
