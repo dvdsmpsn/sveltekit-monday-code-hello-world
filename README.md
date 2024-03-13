@@ -105,7 +105,8 @@ export default {
 
 To build your SvelteKit app, you can run `npm run build`, which will build all the code into a native javascript application in the `build` directory.
 
-To deploy you app to monday code, you would normally run `mapps code:push`. This takes a copy of all the files in the directory and bundles them into an archiev `code.tar.gz`, uploads it onto the monday code infrastructure and then attempts to run whatever it has.
+To deploy you app to monday code, you would normally run `mapps code:push`. This takes a copy of all the files in the directory and bundles them into an archive `code.tar.gz`, uploads it onto the monday code infrastructure and then attempts to run whatever it has.
+
 
 **This is not going to work with SvelteKit.**
 
