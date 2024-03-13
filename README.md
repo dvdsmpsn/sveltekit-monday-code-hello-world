@@ -180,6 +180,8 @@ We don't want any secret information such as OAuth client ID/secret or database 
 
 For local development, a `.env` file (which **should be ignored** using `.gitignore` – don't ever let this file into your repository) works nicely.
 
+*Aside: SvelteKit will just read the contents of a `.env` file automatically. It's not node/express, so there's no need to have a `dotenv` dependency here.*
+
 `.env`:
 
 ```
