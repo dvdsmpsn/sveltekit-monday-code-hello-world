@@ -178,7 +178,7 @@ This bundles the contents of the `/build` directory, which also contains a `pack
 
 We don't want any secret information such as OAuth client ID/secret or database connections and the like to be anywhere in our codebase, so we need a way to set these.
 
-For local development, a `.env` file (which is ignored using `.gitignore`) works nicely.
+For local development, a `.env` file (which **should be ignored** using `.gitignore` – don't ever let this file into your repository) works nicely.
 
 `.env`:
 
